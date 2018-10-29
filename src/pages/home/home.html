@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="form_container">
+    <h1 class="tittle_big">
+      Bienvenido
+    </h1>
+    <ion-item>
+      <ion-input [(ngModel)]="person_id" type="number" placeholder="Cedula"></ion-input>
+    </ion-item>
+    <button class="start_button" (click)="start()">Empezar</button>
+  </div>
+</ion-content>
