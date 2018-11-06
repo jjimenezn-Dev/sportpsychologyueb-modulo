@@ -10,9 +10,7 @@ import { AngularFireAuth } from "angularfire2/auth";
  * Ionic pages and navigation.
  */
 
-@IonicPage({
-  segment: 'assignments/:sbaid/drive&=sdk/:timestamp',
-})
+@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
