@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { User } from '../../models/user';
 import { AngularFireAuth } from "angularfire2/auth";
+import { ConfigServiceProvider } from '../../providers/config-service/config-service';
 
 /**
  * Generated class for the LoginPage page.npm install -g firebase-tools
@@ -20,7 +21,7 @@ export class LoginPage {
   user = {} as User;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private afAuth: AngularFireAuth) {
+    private afAuth: AngularFireAuth, public configService: ConfigServiceProvider) {
   }
 
   async login(){
@@ -33,7 +34,7 @@ export class LoginPage {
       
     } catch (err) {
       console.log("login() error>", err);
-      
+      this.configService.showToast2("Correo o contraseña incorrectos", "toast-failed");
     }
   }
 
