@@ -1,3 +1,23 @@
 page-login {
+    .centered_container{
+        display: block;
+        max-width: 80%;
+        margin: auto;
+        margin-top: 40%;
+    }
+    
+    .tittle_big{
+        padding: 20px;
+        text-align: center;
+    }
 
+    .log_button{
+        display: block;
+        width: 70px;
+        text-align: center; 
+        margin: auto;
+        padding: 20px;
+        margin-top: 30px;
+        width: 50%;
+    }
 }
