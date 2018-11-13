@@ -9,18 +9,22 @@ page-home {
         margin-left: auto;
         margin-right: auto;
     }
+    ion-row{
+    }
     .col{
-        max-width: 100px!important;
-        min-width: 100px!important;
+        max-width: 6.2%!important;
+        min-width: 6.2%!important;
     }
     ion-col{
-        max-width: 100px;
-        min-width: 100px;
+        margin: 2px!important;
+        border: 1px solid color($colors,primary);
+        max-width: 6.2%;
+        min-width: 6.2%;
         
         p{
-            min-width: 100px;
+            min-width: 100%;
             white-space: initial;
-            max-width: 100px;
+            max-width: 100%;
         }
     }
 }
