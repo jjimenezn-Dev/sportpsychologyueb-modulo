@@ -1,9 +1,3 @@
-<!--
-  Generated template for the HomePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -14,5 +8,43 @@
 
 
 <ion-content padding>
-
+  <h1 *ngIf="!login">INVALIDO INICIO DE SESION</h1>
+  <h4 *ngIf="!login">POR FAVOR INGRESE NUEVAMENTE PARA VER LOS DATOS</h4>
+  <ion-grid *ngIf="login">
+    <ion-row>
+      <!-- 15 elementos -->
+      <ion-col>Fecha</ion-col>
+      <ion-col>Tiempo</ion-col>
+      <ion-col>Cedula</ion-col>
+      <ion-col>Nombre</ion-col>
+      <ion-col>Edad</ion-col>
+      <ion-col>Genero</ion-col>
+      <ion-col>Facultad</ion-col>
+      <ion-col>Carrera</ion-col>
+      <ion-col>Altura</ion-col>
+      <ion-col>Peso</ion-col>
+      <ion-col>Distancia</ion-col>
+      <ion-col>pasos</ion-col>
+      <ion-col>velocidad Promedio</ion-col>
+      <ion-col>Altitud Promedio</ion-col>
+      <ion-col>Tipo ACtividad</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let p of actividades">
+        <ion-col *ngIf="p.value.Fecha"><p wrapper>{{p.value.Fecha}}</p></ion-col>
+        <ion-col *ngIf="p.value.Tiempo"><p>{{p.value.Tiempo}}</p></ion-col>
+        <ion-col *ngIf="relationed && p.value.persona && p.value.persona.cedula"><p>{{p.value.persona.cedula}}</p></ion-col>
+        <ion-col *ngIf="relationed && p.value.persona && p.value.persona.nombres && p.value.persona.apellidos"><p>{{p.value.persona.nombres}} {{p.value.persona.apellidos}}</p></ion-col>
+        <ion-col *ngIf="relationed && p.value.persona && p.value.persona.edad"><p>{{p.value.persona.edad}}</p></ion-col>
+        <ion-col *ngIf="relationed && p.value.persona && p.value.persona.genero"><p>{{p.value.persona.genero}}</p></ion-col>
+        <ion-col *ngIf="relationed && p.value.persona && p.value.persona.facultad"><p>{{p.value.persona.facultad}}</p></ion-col>
+        <ion-col *ngIf="relationed && p.value.persona && p.value.persona.carrera"><p>{{p.value.persona.carrera}}</p></ion-col>
+        <ion-col *ngIf="relationed && p.value.persona && p.value.persona.altura"><p>{{p.value.persona.altura}}</p></ion-col>
+        <ion-col *ngIf="relationed && p.value.persona && p.value.persona.peso"><p>{{p.value.persona.peso}}</p></ion-col>
+        <ion-col *ngIf="p.value.distancia != null"><p>{{p.value.distancia}}</p></ion-col>
+        <ion-col *ngIf="p.value.pasos != null"><p>{{p.value.pasos}}</p> </ion-col>
+        <ion-col *ngIf="p.value.velocidad != null"><p>{{p.value.velocidad}}</p></ion-col>
+        <ion-col *ngIf="p.value.altitud != null"><p>{{p.value.altitud}}</p></ion-col>
+        <ion-col *ngIf="p.value.tipo_actividad != null"><p>{{p.value.tipo_actividad}}</p></ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

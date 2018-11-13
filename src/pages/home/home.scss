@@ -1,3 +1,26 @@
 page-home {
-
+    h1{
+        width:fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    h4{
+        width:fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .col{
+        max-width: 100px!important;
+        min-width: 100px!important;
+    }
+    ion-col{
+        max-width: 100px;
+        min-width: 100px;
+        
+        p{
+            min-width: 100px;
+            white-space: initial;
+            max-width: 100px;
+        }
+    }
 }

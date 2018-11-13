@@ -7,9 +7,11 @@ import { AngularFireModule } from "angularfire2";
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { HttpClientModule } from '@angular/common/http'; 
 
+import { ConfigServiceProvider } from '../providers/config-service/config-service';
+
 import { MyApp } from './app.component';
 import { FIREBASE_CONFIG } from './app.firebase.config';
-import { ConfigServiceProvider } from '../providers/config-service/config-service';
+import { AngularFireDatabaseModule } from "angularfire2/database";
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { ConfigServiceProvider } from '../providers/config-service/config-servic
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireAuthModule,
+    AngularFireDatabaseModule,
     HttpClientModule
   ],
   bootstrap: [IonicApp],

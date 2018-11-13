@@ -29,7 +29,7 @@ export class LoginPage {
       const result = await this.afAuth.auth.signInWithEmailAndPassword(this.user.email, this.user.password);
       console.log("login() success", result );
       if(result){
-        this.navCtrl.setRoot("HomePage");
+        this.navCtrl.setRoot("HomePage", {login: result});
       }
       
     } catch (err) {
