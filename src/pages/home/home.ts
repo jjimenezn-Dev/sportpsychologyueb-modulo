@@ -99,7 +99,7 @@ export class HomePage {
   }
   write(): XLSX.WorkBook {
     /* generate worksheet */
-    const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(this.excel);
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.excel);
 
     /* generate workbook and add the worksheet */
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
@@ -109,44 +109,32 @@ export class HomePage {
   };
 /* Export button */
 async export() {
-  this.excel.push(["Fecha","tiempo","Doc-id","Nombre","Edad","Genero","Facultad","Carrera","Estatura","Peso","Distancia","Pasos","Velocidad Promedio","Altitud","Tipo Actividad"])
   for (let index = 0; index < this.actividades.length; index++) {
-    let json_excel =[this.actividades[index].value.Fecha,
-     this.actividades[index].value.Tiempo,
-     this.actividades[index].value.persona.cedula,
-     this.actividades[index].value.persona.nombres+" "+ this.actividades[index].value.persona.apellidos
-    ,this.actividades[index].value.persona.edad
-    , this.actividades[index].value.persona.genero
-    ,this.actividades[index].value.persona.facultad
-    , this.actividades[index].value.persona.Carrera
-    , this.actividades[index].value.persona.altura
-    , this.actividades[index].value.persona.peso
-    , this.actividades[index].value.distancia
-    , this.actividades[index].value.pasos
-    , this.actividades[index].value.velocidad
-    ,this.actividades[index].value.altitud
-    , this.actividades[index].value.tipo_actividad];
+    let json_excel ={"Fecha" :this.actividades[index].value.Fecha,
+    "tiempo" :this.actividades[index].value.Tiempo,
+    "Doc-id" :this.actividades[index].value.persona.cedula,
+    "Nombre" :this.actividades[index].value.persona.nombres+" "+ this.actividades[index].value.persona.apellidos
+    ,"Edad" :this.actividades[index].value.persona.edad
+    ,"Genero" :this.actividades[index].value.persona.genero
+    ,"Facultad" :this.actividades[index].value.persona.facultad
+    ,"Carrera" :this.actividades[index].value.persona.Carrera
+    ,"Estatura" :this.actividades[index].value.persona.altura
+    ,"Peso" :this.actividades[index].value.persona.peso
+    ,"Distancia" :this.actividades[index].value.distancia
+    ,"Pasos" :this.actividades[index].value.pasos
+    ,"Velocidad Promedio" :this.actividades[index].value.velocidad
+    ,"Altitud" :this.actividades[index].value.altitud
+    ,"Tipo Actividad" :this.actividades[index].value.tipo_actividad};
     this.excel.push(json_excel);
   }
+  console.log('excel-->',this.excel);
+  
   const wb: XLSX.WorkBook = this.write();
-    const filename: string = "SheetJSIonic.xlsx";
-      /* generate Blob */
-      const wbout: ArrayBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
-      const blob: Blob = new Blob([wbout], {type: 'application/octet-stream'});
-
-      /* find appropriate path for mobile */
-      const target: string = this.file.documentsDirectory || this.file.externalDataDirectory || this.file.dataDirectory || '';
-      const dentry = await this.file.resolveDirectoryUrl(target);
-      const url: string = dentry.nativeURL || '';
-
-      /* attempt to save blob to file */
-      await this.file.writeFile(url, filename, blob, {replace: true});
-      alert(`Wrote to SheetJSIonic.xlsx in ${url}`);
-
-      /* in the browser, use writeFile */
-      XLSX.writeFile(wb, filename);
-      
- 
-  };
+  const filename: string = "datos.xlsx";
+  /* generate Blob */
+  const wbout: ArrayBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+  const blob: Blob = new Blob([wbout], {type: 'application/octet-stream'});
+  XLSX.writeFile(wb, filename);
+};
 
 }
