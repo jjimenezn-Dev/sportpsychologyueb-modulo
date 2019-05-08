@@ -12,7 +12,7 @@ import { ConfigServiceProvider } from '../providers/config-service/config-servic
 import { MyApp } from './app.component';
 import { FIREBASE_CONFIG } from './app.firebase.config';
 import { AngularFireDatabaseModule } from "angularfire2/database";
-
+import { File } from '@ionic-native/file/ngx';
 @NgModule({
   declarations: [
     MyApp,
@@ -31,6 +31,7 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
   ],
   providers: [
     StatusBar,
+    File,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ConfigServiceProvider

@@ -9,6 +9,9 @@
 
 
 <ion-content padding>
+
+  <button ion-button (click)="export()">Descargar</button>
+
   <h1 *ngIf="!login">INVALIDO INICIO DE SESION</h1>
   <h4 *ngIf="!login">POR FAVOR INGRESE NUEVAMENTE PARA VER LOS DATOS</h4>
   <ion-grid *ngIf="login">
@@ -16,7 +19,7 @@
       <!-- 15 elementos -->
       <ion-col style="background-color: rgb(63, 141, 63)">Fecha</ion-col>
       <ion-col style="background-color: rgb(63, 141, 63)">Tiempo(min)</ion-col>
-      <ion-col style="background-color: rgb(63, 141, 63)">Doc id</ion-col>
+      <ion-col style="background-color: rgb(63, 141, 63)">Doc-id</ion-col>
       <ion-col style="background-color: rgb(63, 141, 63)">Nombre</ion-col>
       <ion-col style="background-color: rgb(63, 141, 63)">Edad</ion-col>
       <ion-col style="background-color: rgb(63, 141, 63)">Genero</ion-col>
@@ -27,7 +30,7 @@
       <ion-col style="background-color: rgb(63, 141, 63)">Distancia</ion-col>
       <ion-col style="background-color: rgb(63, 141, 63)">Pasos</ion-col>
       <ion-col style="background-color: rgb(63, 141, 63)">Velocidad Promedio</ion-col>
-      <ion-col style="background-color: rgb(63, 141, 63)">Altitud Promedio</ion-col>
+      <ion-col style="background-color: rgb(63, 141, 63)">Altitud</ion-col>
       <ion-col style="background-color: rgb(63, 141, 63)">Tipo Actividad</ion-col>
     </ion-row>
     <ion-row *ngFor="let p of actividades">
