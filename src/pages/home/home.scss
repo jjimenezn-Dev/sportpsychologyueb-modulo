@@ -1,4 +1,10 @@
 page-home {
+    .tittle_big{
+        text-align: center;
+        color: color($colors, orange)!important;
+        font-weight: bolder; 
+        font-size: 30px;
+    }
     h1{
         width:fit-content;
         margin-left: auto;
@@ -9,22 +15,79 @@ page-home {
         margin-left: auto;
         margin-right: auto;
     }
-    ion-row{
+    
+
+    .logo{
+        display: block;
+        margin: 10% auto;
+        margin-bottom: 0;
+        width: 300px;
     }
-    .col{
-        max-width: 6.5%!important;
-        min-width: 6.5%!important;
-    }
-    ion-col{
-        margin: 1px!important;
-        border: 1px solid color($colors,primary);
-        max-width: 6.5%;
-        min-width: 6.5%;
-        
-        p{
+
+    .table_buttons{
+        ion-col{
+            min-width: 10%!important;
+        }
+        .download_col{
+            min-width: 60%!important;
+        }
+        button{
             min-width: 100%;
-            white-space: initial;
-            max-width: 100%;
         }
     }
+
+    .download{
+        background-color: color($colors, orange);
+    }
+
+    .download:hover{
+        background-color: white!important;
+        color: color($colors, orange)!important;
+        box-shadow: 0 0 10px color($colors, orange) !important;
+    }
+
+    #customers {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        width: 100%!important;
+        ion-row{
+        }
+        .col{
+        }
+        ion-col{
+            min-width: 6.5%;
+            p{
+                min-width: 100%;
+                white-space: initial;
+                max-width: 100%;
+            }
+        }
+      }
+      
+      #customers ion-col, #customers .th{
+        border: 1px solid #ddd;
+        padding: 5px 8px;
+      }
+      
+      #customers ion-row:nth-child(even){background-color: #f2f2f2;}
+      
+      #customers ion-row:hover {background-color: #ddd;}
+      
+      #customers .th{
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        font-weight: bolder; 
+        background-color: color($colors, primary);
+        color: white;
+      }
+
+      .dateSelector, .dateSelector2{
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 2rem;
+      }
+      .searchByDate{
+        text-align: center;
+      }
 }

@@ -1,12 +1,14 @@
 export interface PersonaItem {
     altura: string,
-    Peso: string,
+    peso: string,
+    masaCorporal: string,
     apellidos: string,
-    carrera: string,
+    semestre: string,
     cedula: number,
     edad: number,
     facultad: string,
     genero: string,
     nombres: string,
     puntos: number,
+    mensaje: string,
 }

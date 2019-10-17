@@ -1,4 +1,35 @@
 page-login {
+    .fondo{
+        background-image: url('../assets/imgs/gimnasio.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .logo{
+        display: block;
+        margin: 20px auto;
+        width: 200px;
+    }
+
+    .form_container{
+        margin: 20px auto;
+        height: 500px;
+        padding: 5% 5px;
+        width: 50%;
+        background-color: rgba(255,255,255,0.7);
+    }
+
+    .cedula{
+        background-color: rgba(0,0,0,0);
+        font-weight: initial;
+        color: #000!important;
+        ion-input{
+            text-align: center;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+    }
+
     .centered_container{
         display: block;
         max-width: 80%;
@@ -7,17 +38,19 @@ page-login {
     }
     
     .tittle_big{
-        padding: 20px;
         text-align: center;
     }
 
-    .log_button{
-        display: block;
-        width: 70px;
-        text-align: center; 
-        margin: auto;
-        padding: 20px;
-        margin-top: 30px;
-        width: 50%;
+    .start_button{
+        margin-top: 25px;
     }
+    @media only screen and (max-width: 888px) {
+        .form_container{
+            width: 80%;
+            height: 400px;
+        }
+        .start_button{
+            font-size: 10px;
+        }
+      }
 }

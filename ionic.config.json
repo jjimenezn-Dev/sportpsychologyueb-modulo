@@ -1,5 +1,7 @@
 {
   "name": "sportpsychologyueb-modulo",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }

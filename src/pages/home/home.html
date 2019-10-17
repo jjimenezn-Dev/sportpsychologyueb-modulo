@@ -1,54 +1,86 @@
-<ng-template #nu><ion-col>NA</ion-col></ng-template>
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>Sport Psychology</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-
-  <button ion-button (click)="export()">Descargar</button>
-
+<ion-content >
+  <img *ngIf="!login" src="../assets/imgs/UEBlogo.png" alt="UEB" class="logo">
   <h1 *ngIf="!login">INVALIDO INICIO DE SESION</h1>
   <h4 *ngIf="!login">POR FAVOR INGRESE NUEVAMENTE PARA VER LOS DATOS</h4>
-  <ion-grid *ngIf="login">
+  <ion-row *ngIf="login">
+    <ion-col col-12>
+        <h1 color='dark' class="tittle_big">
+          Datos tomados
+          </h1>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="login">
+    <ion-col col-5>
+      <label class="dateSelector2">Filtro por fecha</label>
+    </ion-col>
+    <ion-col col-5>
+      <input class="dateSelector" value="SelectedDate" (change)='compareDates()' type='date'/>
+    </ion-col>
+    <ion-col col->
+      <button style="background-color: #7dbe4b;" (click)="forceLoad()"><ion-icon style="font-size: xx-large;" name="refresh"></ion-icon></button>  
+    </ion-col>
+  </ion-row>
+  <ion-row class="table_buttons" *ngIf="login">
+    <ion-col>
+      <button  ion-button (click)="before()">anterior</button>
+    </ion-col>
+    <ion-col class="download_col">
+        <button  class="download" ion-button (click)="export()">Descargar</button>
+    </ion-col>
+    <ion-col class="next">
+      <button ion-button (click)="after()">siguiente</button>
+    </ion-col>
+  </ion-row>
+
+  <ion-grid id="customers" *ngIf="login"> <!--/////////////////////////////////////////////-->
     <ion-row class="ion-align-items-center">
       <!-- 15 elementos -->
-      <ion-col style="background-color: rgb(63, 141, 63)">Fecha</ion-col>
-      <ion-col style="background-color: rgb(63, 141, 63)">Tiempo(min)</ion-col>
-      <ion-col style="background-color: rgb(63, 141, 63)">Doc-id</ion-col>
-      <ion-col style="background-color: rgb(63, 141, 63)">Nombre</ion-col>
-      <ion-col style="background-color: rgb(63, 141, 63)">Edad</ion-col>
-      <ion-col style="background-color: rgb(63, 141, 63)">Genero</ion-col>
-      <ion-col style="background-color: rgb(63, 141, 63)">Facultad</ion-col>
-      <ion-col style="background-color: rgb(63, 141, 63)" >Carrera</ion-col>
-      <ion-col style="background-color: rgb(63, 141, 63)">Estatura</ion-col>
-      <ion-col style="background-color: rgb(63, 141, 63)">Peso</ion-col>
-      <ion-col style="background-color: rgb(63, 141, 63)">Distancia</ion-col>
-      <ion-col style="background-color: rgb(63, 141, 63)">Pasos</ion-col>
-      <ion-col style="background-color: rgb(63, 141, 63)">Velocidad Promedio</ion-col>
-      <ion-col style="background-color: rgb(63, 141, 63)">Altitud</ion-col>
-      <ion-col style="background-color: rgb(63, 141, 63)">Tipo Actividad</ion-col>
+      <ion-col class="th">Fecha</ion-col>
+      <ion-col class="th">Genero</ion-col>
+      <ion-col class="th">Facultad</ion-col>
+      <ion-col class="th">semestre</ion-col>
+      <ion-col class="th">Edad</ion-col>
+      <ion-col class="th">Nombre</ion-col>
+      <ion-col class="th">Documento</ion-col>
+      <ion-col class="th">Estatura m</ion-col>
+      <ion-col class="th">Peso Kg</ion-col>
+      <ion-col class="th">Masa Corporal</ion-col>
+      <ion-col class="th">Tiempo min</ion-col>
+      <ion-col class="th">Distancia Km</ion-col>
+      <ion-col class="th">Pasos</ion-col>
+      <ion-col class="th">Velocidad Promedio m/s</ion-col>
+      <!--ion-col class="th">Altitud</ion-col>-->
+      <!--ion-col class="th">Tipo Actividad</ion-col>-->
+      <ion-col class="th">Esfuerzo</ion-col>
     </ion-row>
-    <ion-row *ngFor="let p of actividades">
-        <ion-col *ngIf="p.value.Fecha" style="background-color:rgb(208, 243, 208)"><p wrapper>{{p.value.Fecha}}</p></ion-col>
-        <ion-col *ngIf="p.value.Tiempo"><p>{{p.value.Tiempo}}</p></ion-col>
-        <ion-col *ngIf="relationed && p.value.persona && p.value.persona.cedula"style="background-color:rgb(208, 243, 208)"><p>{{p.value.persona.cedula}}</p></ion-col>
-        <ion-col *ngIf="relationed && p.value.persona && p.value.persona.nombres && p.value.persona.apellidos"><p>{{p.value.persona.nombres}} {{p.value.persona.apellidos}}</p></ion-col>
-        <ion-col *ngIf="relationed && p.value.persona && p.value.persona.edad"style="background-color:rgb(208, 243, 208)"><p>{{p.value.persona.edad}}</p></ion-col>
-        <ion-col *ngIf="relationed && p.value.persona && p.value.persona.genero"><p>{{p.value.persona.genero}}</p></ion-col>
-        <ion-col *ngIf="relationed && p.value.persona && p.value.persona.facultad"style="background-color:rgb(208, 243, 208)"><p>{{p.value.persona.facultad}}</p></ion-col>
-        <ion-col *ngIf="relationed && p.value.persona && p.value.persona.carrera"><p>{{p.value.persona.carrera}}</p></ion-col>
-        <ion-col *ngIf="relationed && p.value.persona && p.value.persona.altura"style="background-color:rgb(208, 243, 208)"><p>{{p.value.persona.altura}}</p></ion-col>
-        <ion-col *ngIf="relationed && p.value.persona && p.value.persona.peso"><p>{{p.value.persona.peso}}</p></ion-col>
-        <ion-col *ngIf="p.value.distancia != null"style="background-color:rgb(208, 243, 208)"><p>{{p.value.distancia}}</p></ion-col>
-        <ion-col *ngIf="p.value.pasos != null"><p>{{p.value.pasos}}</p> </ion-col>
-        <ion-col *ngIf="p.value.velocidad != null"style="background-color:rgb(208, 243, 208)"><p>{{p.value.velocidad}}</p></ion-col>
-        <ion-col *ngIf="p.value.altitud != null"><p>{{p.value.altitud}}</p></ion-col>
-        <ion-col *ngIf="p.value.tipo_actividad"style="background-color:rgb(208, 243, 208)"><p>{{p.value.tipo_actividad}}</p></ion-col>
+    <span *ngIf="!load_page">
+        <ion-row *ngFor="let p of actividades[actual_page]">
+            <ion-col><p *ngIf="p.value.Fecha" wrapper>{{(p.value.Fecha + '').split("GMT")[0]}}</p></ion-col>
+            <ion-col><p *ngIf="relationed && p.value.persona && p.value.persona.genero">{{p.value.persona.genero}}</p></ion-col>
+            <ion-col><p *ngIf="relationed && p.value.persona && p.value.persona.facultad">{{p.value.persona.facultad}}</p></ion-col>
+            <ion-col><p *ngIf="relationed && p.value.persona && p.value.persona.semestre">{{p.value.persona.semestre}}</p></ion-col>
+            <ion-col><p *ngIf="relationed && p.value.persona && p.value.persona.edad">{{p.value.persona.edad}}</p></ion-col>
+            <ion-col><p *ngIf="relationed && p.value.persona && p.value.persona.nombres && p.value.persona.apellidos">{{p.value.persona.nombres}} {{p.value.persona.apellidos}}</p></ion-col>
+            <ion-col><p *ngIf="relationed && p.value.persona && p.value.persona.cedula">{{p.value.persona.cedula}}</p></ion-col>
+            <ion-col><p *ngIf="relationed && p.value.persona && p.value.persona.altura">{{p.value.persona.altura}}</p></ion-col>
+            <ion-col><p *ngIf="relationed && p.value.persona && p.value.persona.peso">{{p.value.persona.peso}}</p></ion-col>
+            <ion-col><p *ngIf="relationed && p.value.persona && p.value.persona.masaCorporal">{{parseInt(p.value.persona.masaCorporal)}}</p></ion-col>
+            <ion-col><p *ngIf="p.value.Tiempo">{{p.value.Tiempo}}</p></ion-col>
+            <ion-col><p *ngIf="p.value.distancia != null">{{(p.value.distancia).toFixed(3)}}</p></ion-col>
+            <ion-col><p *ngIf="p.value.pasos != null">{{(p.value.pasos).toFixed(0)}}</p> </ion-col>
+            <ion-col><p *ngIf="p.value.velocidad != null">{{p.value.velocidad.toFixed(3)}}</p></ion-col>
+            <!--ion-col><p *ngIf="p.value.altitud != null">{{p.value.altitud}}</p></ion-col>-->
+            <!--ion-col><p *ngIf="p.value.tipo_actividad">{{p.value.tipo_actividad}}</p></ion-col>-->
+            <ion-col><p>{{p.value.esfuerzo ? p.value.esfuerzo: 0}}</p></ion-col>
+        </ion-row>
+    </span>
+    <ion-row>
+      <ion-col col-12>
+        <p style="text-align:center; width: 100%">{{actual_page+1}} / {{actividades.length}}</p>
+      <button class="start_button" ion-button (click)="register()" >Registrar usuario</button>
+      <button class="start_button end_button" ion-button (click)="salir()" >Salir</button>
+      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
